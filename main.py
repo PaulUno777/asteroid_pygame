@@ -9,16 +9,18 @@ def main():
     pygame.init()
     screen = pygame.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT))
     clock = pygame.time.Clock()
-    deltatime = 0
+    delta_time = 0
     player = Player(SCREEN_WIDTH / 2, SCREEN_HEIGHT / 2)
     while True:
         screen.fill((0, 0, 0))
         player.draw(screen)
+        
         pygame.display.flip()
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 return
-        deltatime = clock.tick(60) / 1000
+        delta_time = clock.tick(60) / 1000
+        player.update(delta_time)
 
 
 if __name__ == "__main__":
