@@ -30,7 +30,13 @@ def main():
         # Draw all drawable objects
         for item in drawable:
             item.draw(screen)
-        
+
+        # Check for collisions
+        for asteroid in asteroids:
+            if player.collide(asteroid):
+                print("Game over!")
+                pygame.quit()
+                return
         pygame.display.flip()
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
